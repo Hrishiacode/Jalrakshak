@@ -1,0 +1,174 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ============================================================
+   JALRAKSHAK — Design System
+   Clean, professional disaster-management command center
+   ============================================================ */
+
+@theme {
+  --color-navy-50: #f0f4f8;
+  --color-navy-100: #d9e2ec;
+  --color-navy-200: #bcccdc;
+  --color-navy-300: #9fb3c8;
+  --color-navy-400: #829ab1;
+  --color-navy-500: #627d98;
+  --color-navy-600: #486581;
+  --color-navy-700: #334e68;
+  --color-navy-800: #243b53;
+  --color-navy-900: #102a43;
+
+  --color-risk-safe: #10b981;
+  --color-risk-watch: #f59e0b;
+  --color-risk-warning: #f97316;
+  --color-risk-alert: #ef4444;
+  --color-risk-evacuate: #dc2626;
+
+  --color-data-primary: #0ea5e9;
+  --color-data-secondary: #6366f1;
+  --color-data-accent: #06b6d4;
+
+  --color-margin-safe: #10b981;
+  --color-margin-caution: #f59e0b;
+  --color-margin-critical: #ef4444;
+  --color-margin-negative: #dc2626;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: #f8fafc;
+  color: #243b53;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #bcccdc;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9fb3c8;
+}
+
+/* Leaflet fixes */
+.leaflet-container {
+  font-family: var(--font-sans) !important;
+  border-radius: 8px;
+}
+
+/* Risk badge colors */
+.risk-safe { background: #10b981; color: white; }
+.risk-watch { background: #f59e0b; color: white; }
+.risk-warning { background: #f97316; color: white; }
+.risk-alert { background: #ef4444; color: white; }
+.risk-evacuate { background: #dc2626; color: white; animation: pulse-alert 1.5s ease-in-out infinite; }
+
+@keyframes pulse-alert {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Countdown animation */
+@keyframes countdown-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.countdown-active {
+  animation: countdown-pulse 2s ease-in-out infinite;
+}
+
+/* Sensor heartbeat */
+@keyframes heartbeat {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.sensor-heartbeat {
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+/* Status indicator dot */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.status-dot.online { background: #10b981; }
+.status-dot.warning { background: #f59e0b; }
+.status-dot.offline { background: #ef4444; }
+.status-dot.stale { background: #9fb3c8; }
+.status-dot.operational { background: #10b981; }
+.status-dot.degraded { background: #f59e0b; }
+.status-dot.critical { background: #ef4444; }
+
+/* Demo data banner */
+.demo-banner {
+  background: #f0f4f8;
+  border: 1px dashed #bcccdc;
+  color: #627d98;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Catchment graph */
+.catchment-node {
+  transition: all 0.3s ease;
+}
+.catchment-node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.catchment-edge {
+  stroke-dasharray: 8 4;
+  animation: flow-downstream 1s linear infinite;
+}
+@keyframes flow-downstream {
+  to { stroke-dashoffset: -12; }
+}
+
+/* Card styles */
+.card {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  padding: 16px;
+}
+.card-header {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #627d98;
+  margin-bottom: 8px;
+}
